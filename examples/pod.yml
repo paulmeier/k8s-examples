@@ -1,33 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-configmap-volume-pod
+  name: my-pod
+  labels:
+    app: myapp
 spec:
-  # Define a security context to run the container as on the underlying os secuirty model
-  # securityContext:
-  #  runAsUser: 2000
-  #  fsGroup: 3000
   containers:
-  - name: myapp-container
-    image: busybox
-    command: ['sh', '-c', "echo $(cat /etc/config/myKey) && sleep 3600"]
-    # ARGS: Specifiy a command then args associated with it
-    # command: ['echo']
-    # args: ['Hello']
-    # RESOURCE REQUIREMENTS - What resource requets and limits for the container
-    resources:
-      requests:
-        memory: "64Mi"
-        cpu: "250m"
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
-    # Mount the config-volume to the mount path /etc/config
-    volumeMounts:
-      - name: config-volume
-        mountPath: /etc/config
-  # Mount the config-map as a volume named config-volume
-  volumes:
-    - name: config-volume
-      configMap:
-        name: my-config-map
+    - name: myapp-container
+      image: busybox
+      command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
