@@ -1,11 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-   name: my-config-map
+  name: my-config-map
 data:
-   myKey: myValue
-   anotherKey: anotherValue
-   candy.cfg: |-
-    candy.peppermint.power=100000000
-    candy.nougat-armor.strength=10
-    candy.lemon.acceptability=0
+  myKey: myValue
+  anotherKey: anotherValue
