@@ -1,6 +1,4 @@
-### Debugging
-
-#### In general 
+### General
 
 * kubectl get pods
 * kubectl get namespace
@@ -10,7 +8,7 @@
 (e.g. image tag wrong)
 * kubectl edit pod nginx -n nginx-ns
 
-#### Safely delete and re-create
+#### Delete and re-create
 
 * kubectl get pod nginx -n nginx-ns -o yaml --export > nginx-pod.yml
 * kubectl delete pod nginx -n nginx-ns
@@ -37,3 +35,20 @@
 * kubectl rollout history deployment/rolling-deployment --revision=2
 * kubectl rollout undo deployment/rolling-deployment
 * kubectl rollout undo deployment/rolling-deployment --to-revision=1
+
+### Batch
+
+* kubectl get jobs
+* kubectl get cronjobs
+
+### Services
+
+* kubectl get svc
+* kubectl get endpoints my-service
+
+### Network Policy
+
+* kubectl get networkpolicies
+* kubectl describe networkpolicy my-network-policy
+* kubectl get pod network-policy-secure-pod -o wide
+* kubectl exec network-policy-client-pod -- curl _{secure pod cluster ip address}_
